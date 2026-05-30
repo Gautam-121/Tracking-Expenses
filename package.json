@@ -1,0 +1,38 @@
+{
+  "name": "expense-tracking-and-distribution",
+  "version": "1.0.0",
+  "description": "Track the expenses between multiple task and distrubute the settlement between registered participants",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "migrate": "node src/config/umzug.js up",
+    "migrate:undo": "node src/config/umzug.js down",
+    "migrate:status": "node src/config/umzug.js status"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gautam-121/Tracking-Expenses.git"
+  },
+  "author": "Gautam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gautam-121/Tracking-Expenses/issues"
+  },
+  "homepage": "https://github.com/Gautam-121/Tracking-Expenses#readme",
+  "dependencies": {
+    "compression": "^1.8.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "helmet": "^8.2.0",
+    "hpp": "^0.2.3",
+    "pg": "^8.21.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.8",
+    "umzug": "^3.8.3",
+    "zod": "^4.4.3"
+  }
+}
