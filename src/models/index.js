@@ -1,8 +1,8 @@
 import sequelize from '../config/database.js';
-import Group from './Group.js';
-import Participant from './Participant.js';
-import Expense from './Expense.js';
-import ExpenseParticipant from './ExpenseParticipant.js';
+import Group from './group.js';
+import Participant from './participant.js';
+import Expense from './expense.js';
+import ExpenseParticipant from './expenseParticipant.js';
 
 // Group → Participants
 Group.hasMany(Participant, { foreignKey: 'groupId', as: 'participants' });
@@ -24,4 +24,13 @@ ExpenseParticipant.belongsTo(Expense, { foreignKey: 'expenseId', as: 'expense' }
 Participant.hasMany(ExpenseParticipant, { foreignKey: 'participantId', as: 'expenseShares' });
 ExpenseParticipant.belongsTo(Participant, { foreignKey: 'participantId', as: 'participant' });
 
-module.exports = { sequelize, Group, Participant, Expense, ExpenseParticipant };
+
+const db = {
+    sequelize,
+    Group,
+    Participant,
+    Expense,
+    ExpenseParticipant,
+};
+
+export default db;

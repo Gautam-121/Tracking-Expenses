@@ -53,12 +53,6 @@ const handleConnectionTimedOutErrorDB = (err) => {
     return new ApiError(504, "Server connection timed out. Please try again.");
 };
 
-// --- JWT Error Handlers ---
-const handleJWTError = () => new ApiError(HttpStatusCode.UNAUTHORIZED, 'Invalid token. Please log in again.');
-const handleJWTExpiredError = () => new ApiError(HttpStatusCode.UNAUTHORIZED, 'Your session has expired. Please log in again.');
-const handleJWTMalformedError = () => new ApiError(HttpStatusCode.UNAUTHORIZED, 'Malformed token. Please log in again.');
-const handleJWTNotBeforeError = () => new ApiError(HttpStatusCode.UNAUTHORIZED, 'Token not active yet. Please log in again.');
-
 const errorMiddleware = (err, req, res, next) => {
     let error = Object.assign(err, { message: err.message, name: err.name });
     

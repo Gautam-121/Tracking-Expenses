@@ -1,5 +1,4 @@
 /**
- * Antigravity Skill: Standardized Response Handling
  * Uniform structure for all successful API responses.
  */
 class ApiResponse {

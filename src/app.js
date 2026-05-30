@@ -8,7 +8,7 @@ import HttpStatusCode from './utils/HttpStatusCode.js';
 import ApiError from './utils/ApiError.js';
 import errorMiddleware from './middlewares/errorMiddleware.js';
 import sequelize from './config/database.js';
-import healthRouter from './routes/health.js';
+import indexRouter from './routes/index.js';
 
 
 const app = express();
@@ -63,7 +63,7 @@ app.use(express.urlencoded({ limit: '50kb', extended: true }));
 app.use(hpp());
 
 // --- API Routes ---
-app.use('/api/v1/health', healthRouter);
+app.use('/api/v1', indexRouter);
 
 
 // 404 Handler
