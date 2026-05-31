@@ -1,5 +1,12 @@
+import { createRequire } from 'module';
 import { Sequelize } from 'sequelize';
 import env from './env.js';
+
+// Force nft (Vercel's bundler) to include pg in the deployment bundle.
+// Sequelize loads pg via dynamic require() which nft cannot trace statically.
+// This explicit require pre-loads pg into the CJS cache before Sequelize needs it.
+const require = createRequire(import.meta.url);
+require('pg');
 
 
 // Production-grade Sequelize instance with connection pooling, 
