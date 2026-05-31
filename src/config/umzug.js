@@ -1,5 +1,5 @@
 import { Umzug, SequelizeStorage } from 'umzug';
-import sequelize from './database.js';
+import sequelize, { testConnection } from './database.js';
 import { fileURLToPath } from 'url';
 import path from 'path';
 
@@ -25,6 +25,11 @@ export const umzug = new Umzug({
 
 // Run as CLI if executed directly (e.g., via `npm run migrate`)
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  const connected = await testConnection();
+  if (!connected) {
+    console.error('❌ Could not connect to database. Aborting migrations.');
+    process.exit(1);
+  }
   umzug.runAsCLI().catch(err => {
     console.error('❌ Migration failed:', err);
     process.exit(1);
