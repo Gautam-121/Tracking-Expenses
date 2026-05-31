@@ -28,6 +28,16 @@ export const createExpenseBody = z
       .optional(),
   })
   .superRefine((data, ctx) => {
+    // Payer must be in the participants list
+    if (!data.participants.includes(data.paidBy)) {
+      ctx.addIssue({
+        code: 'custom',
+        message: 'Payer must be included in the participants list',
+        path: ['paidBy'],
+      });
+      return;
+    }
+
     if (data.splitType !== 'unequal') return;
 
     // shares object is required for unequal split
