@@ -5,30 +5,30 @@ dotenv.config();
 
 const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
-  PORT: z.string().transform(Number).default('3000'),
-  
+  PORT: z.string().default('3000').transform(Number),
+
   // Database Configuration
   DATABASE_URL: z.string().url(),
-  DB_POOL_MAX: z.string().transform(Number).default('10'),
-  DB_POOL_MIN: z.string().transform(Number).default('2'),
-  DB_POOL_ACQUIRE: z.string().transform(Number).default('60000'),
-  DB_POOL_IDLE: z.string().transform(Number).default('20000'),
-  DB_POOL_EVICT: z.string().transform(Number).default('1000'),
-  DB_RETRY_MAX: z.string().transform(Number).default('5'),
-  DB_RETRY_BACKOFF_BASE: z.string().transform(Number).default('1000'),
-  DB_RETRY_BACKOFF_EXPONENT: z.string().transform(Number).default('1.5'),
-  DB_RETRY_TIMEOUT: z.string().transform(Number).default('5000'),
-  DB_STATEMENT_TIMEOUT: z.string().transform(Number).default('5000'),
-  DB_IDLE_TRANSACTION_TIMEOUT: z.string().transform(Number).default('10000'),
-  DB_CONNECT_TIMEOUT: z.string().transform(Number).default('5000'),
-  DB_SSL: z.string().transform(v => v === 'true').default('false'),
-  DB_BENCHMARK: z.string().transform(v => v === 'true').default('true'),
-  DB_RUN_MIGRATIONS_ON_BOOT: z.string().transform(v => v === 'true').default('false'),
+  DB_POOL_MAX: z.string().default('10').transform(Number),
+  DB_POOL_MIN: z.string().default('2').transform(Number),
+  DB_POOL_ACQUIRE: z.string().default('60000').transform(Number),
+  DB_POOL_IDLE: z.string().default('20000').transform(Number),
+  DB_POOL_EVICT: z.string().default('1000').transform(Number),
+  DB_RETRY_MAX: z.string().default('5').transform(Number),
+  DB_RETRY_BACKOFF_BASE: z.string().default('1000').transform(Number),
+  DB_RETRY_BACKOFF_EXPONENT: z.string().default('1.5').transform(Number),
+  DB_RETRY_TIMEOUT: z.string().default('5000').transform(Number),
+  DB_STATEMENT_TIMEOUT: z.string().default('5000').transform(Number),
+  DB_IDLE_TRANSACTION_TIMEOUT: z.string().default('10000').transform(Number),
+  DB_CONNECT_TIMEOUT: z.string().default('5000').transform(Number),
+  DB_SSL: z.string().default('false').transform(v => v === 'true'),
+  DB_BENCHMARK: z.string().default('true').transform(v => v === 'true'),
+  DB_RUN_MIGRATIONS_ON_BOOT: z.string().default('false').transform(v => v === 'true'),
   CORS_ORIGIN: z.string().default('*'),
 
   // Logging
   LOG_DIR: z.string().optional(),
-  LOG_MAX_STRING_LENGTH: z.string().transform(Number).default('1024'),
+  LOG_MAX_STRING_LENGTH: z.string().default('1024').transform(Number),
   LOG_LEVEL: z.enum(['debug', 'info', 'warn', 'error']).optional(),
 });
 
