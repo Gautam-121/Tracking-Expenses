@@ -6,6 +6,7 @@ import HttpStatusCode from "../utils/HttpStatusCode.js";
 
 const router = express.Router();
 
+// GET /api/health
 router.get("/", async (req, res, next) => {
   const start = Date.now();
   try {

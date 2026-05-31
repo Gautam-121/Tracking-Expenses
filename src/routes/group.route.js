@@ -5,7 +5,10 @@ import { createGroupBody, groupCodeParams } from '../validations/groupValidation
 
 const router = express.Router();
 
+// POST /api/groups
 router.post('/', validateRequest({ body: createGroupBody }), createGroup);
+
+// GET /api/groups/:code
 router.get('/:code', validateRequest({ params: groupCodeParams }), getGroupByCode);
 
 export default router;

@@ -121,7 +121,6 @@ const errorMiddleware = (err, req, res, next) => {
         });
     } else {
         console.warn(`Operational Error: ${error.message}`, {
-            requestId: req.id,
             statusCode: error.statusCode,
             name: error.name
         });

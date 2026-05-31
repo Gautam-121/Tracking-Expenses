@@ -5,8 +5,10 @@ import ApiError from '../utils/ApiError.js';
 import HttpStatusCode from '../utils/HttpStatusCode.js';
 const { Group, Participant, Expense } = db;
 
+// Generate a unique 8-character alphanumeric code for groups
 const generateCode = customAlphabet('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 8);
 
+// ─── Create Group ─────────────────────────────────────────────────────────────
 export const createGroup = async (name) => {
   let group = null;
   while (!group) {
@@ -20,6 +22,7 @@ export const createGroup = async (name) => {
   return group;
 };
 
+// ─── Get Group by Code ───────────────────────────────────────────────────────
 export const getGroupByCode = async (code) => {
   const group = await Group.findOne({
     where: { code },

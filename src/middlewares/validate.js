@@ -61,7 +61,7 @@ const validateInternal = async (schema, data, options = { sanitize: false }) => 
   // 2. Validate using Zod (Zod automatically strips unknown keys by default)
   const result = await schema.safeParseAsync(input);
   if (!result.success) {
-    const errorDetails = result.error.errors.map((err) => ({
+    const errorDetails = result.error.issues.map((err) => ({
       field: err.path.join('.'),
       message: err.message,
       code: err.code
