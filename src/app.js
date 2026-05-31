@@ -40,9 +40,9 @@ app.use(helmet.referrerPolicy({ policy: 'strict-origin-when-cross-origin' }));
 // CORS configuration
 const corsOptions = {
   origin: (origin, callback) => {
-    const allowedOrigins = env.CORS_ORIGIN ? env.CORS_ORIGIN.split(',') : [];
-    // Allow requests with no origin (like mobile apps or curl)
-    if (!origin || allowedOrigins.includes(origin.trim())) {
+    const allowedOrigins = env.CORS_ORIGIN ? env.CORS_ORIGIN.split(',').map((o) => o.trim()) : [];
+    // Allow all origins if wildcard, no origin (curl/mobile), or exact match
+    if (!origin || allowedOrigins.includes('*') || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new ApiError(HttpStatusCode.FORBIDDEN, 'Not allowed by CORS'));
