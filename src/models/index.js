@@ -1,8 +1,8 @@
 import sequelize from '../config/database.js';
-import Group from './group.js';
-import Participant from './participant.js';
-import Expense from './expense.js';
-import ExpenseParticipant from './expenseParticipant.js';
+import Group from './Group.js';
+import Participant from './Participant.js';
+import Expense from './Expense.js';
+import ExpenseParticipant from './ExpenseParticipant.js';
 
 // Group → Participants
 Group.hasMany(Participant, { foreignKey: 'groupId', as: 'participants' });
